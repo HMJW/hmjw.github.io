@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "CentOS7定时任务详解"
-categories: linux
-tags:  centos7 crontab linux 工具软件  
-author: SnakeSon
+title:  "用github page+jekyll搭建个人博客"
+categories: html
+tags:  个人博客 github-page jekyll 
+author: Wjiang
 ---
 
 * content
@@ -12,7 +12,7 @@ author: SnakeSon
 
 ## 前言
 
-工作中需要开启一个定时任务：每天晚上2点进行爬虫代码的运行，这不得不去学习一下linux 下的定时任务crontab
+记录一下搭建博客的过程
 
 ##  crontab
 
