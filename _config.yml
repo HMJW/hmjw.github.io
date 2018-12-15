@@ -7,7 +7,7 @@
 
 # Site settings
 title: wjiang的博客
-brief-intro:a postgraduate learning NLP
+brief-intro: a postgraduate learning NLP
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://643435675.github.io" # the base hostname & protocol for your site
 
