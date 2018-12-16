@@ -28,13 +28,13 @@ clientSecret: 09f914497ccfde3141b450f7ca1c2d66791f8f98
 repo: https://github.com/hmjwhmjw/hmjwhmjw.github.io
 owner: hmjwhmjw
 admin: hmjwhmjw
-id: window.location.pathname
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "https://hm.baidu.com/hm.js?2a0c665a3e9bb5c825020fc3b4d09a32";
 # xxxxx字符串
-
+baidu_tongji_id: 2a0c665a3e9bb5c825020fc3b4d09a32
+google_analytics_id: UA-131008981-1
 
 # Build settings
 markdown: kramdown
