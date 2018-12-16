@@ -21,17 +21,20 @@ email: 762757113@QQ.com
 description_footer: 来自wjiang的个人博客！
 
 # comments
-# two ways to comment, only choose one, and use your own short name
-# 两种评论插件，选一个就好了，使用自己的 short_name
-duoshuo_shortname: #wjiang
-disqus_shortname: wjiang
+# gitalk
+gitalk: enable
+clientID: 232b21edf9969fd33bf6
+clientSecret: 09f914497ccfde3141b450f7ca1c2d66791f8f98
+repo: https://github.com/hmjwhmjw/hmjwhmjw.github.io
+owner: hmjwhmjw
+admin: hmjwhmjw
+id: window.location.pathname
 
 # statistic analysis 统计代码
 # 百度统计 id，将统计代码替换为自己的百度统计id，即
 # hm.src = "https://hm.baidu.com/hm.js?2a0c665a3e9bb5c825020fc3b4d09a32";
 # xxxxx字符串
-baidu_tongji_id: 2a0c665a3e9bb5c825020fc3b4d09a32
-google_analytics_id: UA-131008981-1
+
 
 # Build settings
 markdown: kramdown

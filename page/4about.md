@@ -34,6 +34,3 @@ type: page
 
 [苏州大学](http://www.suda.edu.cn) \| [苏州大学计科院](http://scst.suda.edu.cn) \| [苏大HLT实验室](http://hlt.suda.edu.cn/index.php/首页) \| [导师主页](http://hlt.suda.edu.cn/~zhli/)
 
-## Comments
-
-{% include comments.html %}

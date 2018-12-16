@@ -14,7 +14,3 @@ type: page
 ### python
 
 * [Pytorch文档](https://pytorch.org/docs/stable/index.html)
-
-## Comments
-
-{% include comments.html %}
