@@ -2,7 +2,8 @@
 layout: post
 title:  "用github page+jekyll搭建个人博客"
 categories: html
-tags:  个人博客 github-page jekyll 
+tags:  blog jekyll 
+excerpt: 初次搭建博客
 author: wjiang
 ---
 
@@ -10,15 +11,11 @@ author: wjiang
 {:toc}
 
 
-## 前言
-
-记录一下搭建博客的过程
-
-##  过程
-
+## 过程
 
 简单记录了一下搭建博客的过程。具体不多说，直接上网址。其中评论部分改成了Gitalk。
 
+## 参考
 
 [博客模版地址](https://github.com/xudailong/xudailong.github.io)
 
