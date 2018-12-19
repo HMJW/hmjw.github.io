@@ -70,5 +70,5 @@ type: page
 
 ## 其他
 
-* [自动阅卷程序](/src/coleection/scorer-master-2018-12-2-8-37.tar)
+* [自动阅卷程序](/src/collection/scorer-master-2018-12-2-8-37.tar)
 
