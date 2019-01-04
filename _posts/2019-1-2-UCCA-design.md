@@ -67,7 +67,26 @@ linkage node也是baseline中一个尚未解决的问题。它类似root节点�
 
 #### 4.处理discontinuity
 
-短语结构树要求每个non-terminal节点对应的叶子必须连续，而UCCA允许叶子不连续。判断一个节点的叶子是否不连续比较容易，但是如何消除这种不连续？
+短语结构树要求每个non-terminal节点对应的叶子必须连续，而UCCA允许叶子不连续。判断一个节点的2叶子是否不连续比较容易，共有939个node出现了discontinuity，分布在735个句子中，占比不是很大。我主要把这些node分成两类。
+
+
+
+
+第一类是node之间没有交叉的discontinuity。这种情况比较好处理，跟踪不连续的叶子的父亲找到合适的边作调整即可。最简单的是叶子的父亲恰好是root，那么只要调整对应的边即可，如下图所示。
+![discontinue-example1](/src/2019-1-2-UCCA-design/discontinue-example1.jpg)
+
+
+
+
+但大部分叶子的父亲不是root，上方还有节点，只要不断向上找到合适的node(这个node的父亲的span包含了这个不连续的整个span)，把指向该node的边调整即可。如下面两张图所示。
+![discontinue-example2](/src/2019-1-2-UCCA-design/discontinue-example2.jpg)
+![discontinue-example3](/src/2019-1-2-UCCA-design/discontinue-example3.jpg)
+
+
+
+
+第二类是node之间出现了交叉的discontinuity，如下图。统计了共有125对交叉的node。处理的时候还有bug。
+![discontinue-example4](/src/2019-1-2-UCCA-design/discontinue-example4.jpg)
 
 ## 三、训练span parser
 
