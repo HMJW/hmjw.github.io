@@ -90,7 +90,7 @@ linkage node也是baseline中一个尚未解决的问题。它类似root节点�
 
 
 
-第二类是node之间出现了交叉的discontinuity，统计了共有125对交叉的node。如下图，有两块不连续的span(图中标红的node的span)有交叉。这种情况比较简单，似乎也可以用向上和向下移动的方法解决，如图中黄色和蓝色标记。
+第二类是node之间出现了交叉的discontinuity，统计了共有125对交叉的node。如下图，有两块不连续的span(图中标红的node的span)有交叉。这种情况比较简单，似乎也可以用向上和向下移动的方法解决，如图中黄色和蓝色标记。目测这种情况占大多数。
 ![discontinue-example4](/src/2019-1-2-UCCA-design/discontinue-example4.jpg)
 
 
