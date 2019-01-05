@@ -72,21 +72,34 @@ linkage node也是baseline中一个尚未解决的问题。它类似root节点�
 
 
 
-第一类是node之间没有交叉的discontinuity。这种情况比较好处理，跟踪不连续的叶子的父亲找到合适的边作调整即可。最简单的是叶子的父亲恰好是root，那么只要调整对应的边即可，如下图所示。
+第一类是node之间没有交叉的discontinuity，如下图所示。不管如何，这种情况可以用两种方法调整。第一种策略是向下移动，这种策略定死了span的左右范围，把范围里的不连续节点移到该范围内。如图中黄色标记所示。第二种策略是向上移动，如图中蓝色标记所示，显然在该例子中向上移动的代价要小一些。
 ![discontinue-example1](/src/2019-1-2-UCCA-design/discontinue-example1.jpg)
 
 
 
 
-但大部分叶子的父亲不是root，上方还有节点，只要不断向上找到合适的node(这个node的父亲的span包含了这个不连续的整个span)，把指向该node的边调整即可。如下面两张图所示。
+再来看下面一个例子，如果采用向下移动的策略，只要修改一条边，但有一个子树移动了位置。如果采用向上移动的策略则要移动右边所有的边，似乎这样代价比较大。事实上，我目测数据中这种情况最多，span中不连续的叶子只占一小片，向下移动只要动这一小片叶子即可，而向上移动要把右边所有的叶子都调整位置，也可能会移动右边的子树，所以大部分情况不是很好。
 ![discontinue-example2](/src/2019-1-2-UCCA-design/discontinue-example2.jpg)
+
+
+
+
+同样下面的例子也可以用向上和向下两个策略来解决。总之，只要一个句子中只有一个span出现不连续，或者多个不连续的span彼此不交叉，都可以用这两种方法解决。到时候只要选择代价较小的方法即可。目前向下移动已经实现完。
 ![discontinue-example3](/src/2019-1-2-UCCA-design/discontinue-example3.jpg)
 
 
 
 
-第二类是node之间出现了交叉的discontinuity，如下图。统计了共有125对交叉的node。处理的时候还有bug。
+第二类是node之间出现了交叉的discontinuity，统计了共有125对交叉的node。如下图，有两块不连续的span(图中标红的node的span)有交叉。这种情况比较简单，似乎也可以用向上和向下移动的方法解决，如图中黄色和蓝色标记。
 ![discontinue-example4](/src/2019-1-2-UCCA-design/discontinue-example4.jpg)
+
+
+
+
+
+但下面这个例子比较复杂，从图中来看可以找到一个比较好的移动方法，但是光向上或者向下移动无法解决两个node的不连续。
+![discontinue-example5](/src/2019-1-2-UCCA-design/discontinue-example5.jpg)
+
 
 ## 三、训练span parser
 
