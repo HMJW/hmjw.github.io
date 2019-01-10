@@ -151,7 +151,13 @@ linkage node也是baseline中一个尚未解决的问题。它类似root节点�
 
 ## 三、训练span parser
 
-待添加
+经过进一步的处理，把数据处理成结构树的形式后，我们使用minimal span parser([github链接](https://github.com/mitchellstern/minimal-span-parser))来训练。数据格式如下图所示，需要注意的是数据中会有 ‘(’ 和 ')' 标点导致代码读取数据出错，统一替换成了 '{' 和 '}'。
+
+```
+(TOP (ROOT (H (A (PROPN Hammond)) (P (VERB defended)) (A (PROPN Dylan)) (D (ADV vigorously)) (U (PUNCT .)))))
+```
+
+经过初次实验，span parser在dev上的准确率只有79%左右。如果再经过多个步骤还原为UCCA图进行评价，结果肯定会更低。感觉还有提升的空间，因为span parser只用了pos特征，而baseline用了pos、dependency、entity等等大量的特征。
 
 ## 四、还原为UCCA gragh
 
@@ -162,4 +168,8 @@ linkage node也是baseline中一个尚未解决的问题。它类似root节点�
 * [A Transition-Based Directed Acyclic Graph Parser for UCCA(V2)](https://arxiv.org/pdf/1704.00552v2.pdf)
 
 * [Universal Conceptual Cognitive Annotation (UCCA)](http://www.cs.huji.ac.il/~oabend/papers/ucca_acl.pdf)
+
+* [A Minimal Span-Based Neural Constituency Parser](http://www.aclweb.org/anthology/P/P17/P17-1076.pdf)
+
+* [UCCA resource](http://www.cs.huji.ac.il/~oabend/ucca.html#guidelines)
 
