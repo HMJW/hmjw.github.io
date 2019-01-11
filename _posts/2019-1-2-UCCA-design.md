@@ -161,7 +161,12 @@ linkage node也是baseline中一个尚未解决的问题。它类似root节点�
 
 ## 四、还原为UCCA gragh
 
-待添加
+要还原成UCCA图只需要逆向执行第一步中的步骤即可。根据规则可以还原discontinuity，但是remote边需要额外的模型来处理。如果span parser给出了正确答案，经过简单的处理可以得到如下图的一个例子。边A-remote就表示还有remote边指向同一个节点，所以需要设计一个分类模型来找出还有哪一个节点指向该节点。问题的关键是如何表征一个node，假设对于图中的每一个node都有一个向量表示，我们就可以用bilinear或者biaffine实现多元分类。
+
+![remote2-example](/src/2019-1-2-UCCA-design/remote2-example.jpg)
+
+
+每个node都对应了一个span和指向它的label，所以可以借鉴span parser中的方法用向量表示node。但是有几个区别，其一是我们已知了这张图中的每个node和label，如何把span和label结合起来。其二是node的span可能会出现discontinuity，而编码器并不知晓。具体来说，我们用BiLSTM来获得每个位置$i$上的词的表示，记作$ f_i $和$ b_i $,那么$ span(i, j) = concatenate((f_j-f_i), (b_j-b_i)) $。但是上图中gradution上方的两个node表示会一样，所以还要引入label。假设每个label也用一个向量$ v_label $来表示，那么$ span(i, j, l) = concatenate(span(i, j), v_l) $。接下来可以直接用Bilinear或者Biaffine算出某个node对应其他各个node的分值以及对应的label分值即可。
 
 ## 参考
 
