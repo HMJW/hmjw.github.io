@@ -60,14 +60,14 @@ mathjax: true
 * 加入dep label，entity label(几乎没提升，没调好？)；加入pretrained word embedding[(http://fasttext.cc)](http://fasttext.cc), 提升很大。
 * remote classifier(MLP + Biaffine)的dropout全部删去，本身remote数据少，用drop可能导致训练不完全。MLP的激活函数改为Relu, remote略微提升。
 * span parser部分的FFN加入dropout, 正交初始化，aver f1略微提升。
-* 加入entity-iob, 提升0.5%
+* 加入entity-iob, 似乎有点提升，可能是误差的缘故。
 
 存在的问题：
 * 还需要区分PUNC node？还原成UCCA的时候简单处理了一下，就改了node的type属性。
 * 把结果写到XML文件后重新用脚本评价结果反而变高了一点(0.3-0.4)。为什么？是因为区分PUNC node的原因？
 * remote的F不是很稳定，本身dev中较少。
 * 没有用batch算loss，速度太慢14min一次迭代，span parser就占了10min左右。GPU更慢。
-* 多线程跑, 会有误差(多大？)。
+* 多线程跑, 会有误差(挺大的)，重复跑了多个实验发现结果不是很稳定。
 
 
 
@@ -75,7 +75,7 @@ mathjax: true
 |                           |                    |    Primary    |  |  |  | Remote    |
 |description                |  Track             |   Aver F1   |  P  |  R |  F   |  P  |  R  |  F  |
 |Relu + FFN drop            | English-Wiki-Close |    0.789    |0.798|0.789|0.794|0.613|0.474|0.535|
-|+ entity_iob               | English-Wiki-Close |    0.795    |0.803|0.796|0.799|0.591|0.520|0.554|
+|+ entity_iob(最好的一次)     | English-Wiki-Close |    0.795    |0.803|0.796|0.799|0.591|0.520|0.554|
 
 ## 参考
 
