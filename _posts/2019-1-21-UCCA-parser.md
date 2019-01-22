@@ -53,6 +53,7 @@ mathjax: true
 
 
 细节及调参:
+* 没有考虑left，down只考虑向下移一步
 * 一个节点如果有多条remote edge，都作为正确的pair训练，但预测的时候只取最大的一个。
 * 排除掉了一些节点不可能作为remote edge的parent，但是没有提高准确率。
 * 在恢复discontinuity时，如果移动会产生没有叶子的节点，则不移动。
@@ -66,13 +67,14 @@ mathjax: true
 * remote的F不是很稳定，本身dev中较少。
 * 没有用batch算loss，速度太慢14min一次迭代，span parser就占了10min左右。GPU更慢。
 * 多线程跑, 会有误差(多大？)。
-* TODO:加入entity-iob
+* 加入entity-iob, 提升0.5%
 
-|---
-|                           labeled                              |
-|              |             |    Primary    |  |  |   Remote    |
-|  Track       |   Aver F1   |  P  |  R |  F   |  P  |  R  |  F  |
-| English-Wiki |    0.789    |0.798|0.789|0.794|0.613|0.474|0.535|
+
+|                                                             labeled                              |
+|                           |                    |    Primary    |  |  |   Remote    |
+|description                |  Track             |   Aver F1   |  P  |  R |  F   |  P  |  R  |  F  |
+|Relu + FFN drop            | English-Wiki-Close |    0.789    |0.798|0.789|0.794|0.613|0.474|0.535|
+|+ entity_iob               | English-Wiki-Close |    0.795    |0.803|0.796|0.799|0.591|0.520|0.554|
 
 ## 参考
 
