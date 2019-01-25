@@ -57,7 +57,7 @@ mathjax: true
 * 一个节点如果有多条remote edge，都作为正确的pair训练，但预测的时候只取最大的一个。
 * 排除掉了一些节点不可能作为remote edge的parent，但是没有提高准确率。
 * 在恢复discontinuity时，如果移动会产生没有叶子的节点，则不移动。
-* 加入dep label，entity label(几乎没提升，没调好？)；加入pretrained word embedding[(http://fasttext.cc)](http://fasttext.cc), 提升很大。
+* 加入dep label，entity label(几乎没提升，没调好？)；加入pretrained word embedding[(http://fasttext.cc)](http://fasttext.cc), 提升很大。需要除以标准差，否则基本没效果。
 * remote classifier(MLP + Biaffine)的dropout全部删去，本身remote数据少，用drop可能导致训练不完全。MLP的激活函数改为Relu, remote略微提升。
 * span parser部分的FFN加入dropout, 正交初始化，aver f1略微提升。
 * 加入entity-iob, 似乎有点提升，可能是误差的缘故。
@@ -71,11 +71,21 @@ mathjax: true
 
 
 
-|                                                             labeled                              |
-|                           |                    |    Primary    |  |  |  | Remote    |
-|description                |  Track             |   Aver F1   |  P  |  R |  F   |  P  |  R  |  F  |
-|Relu + FFN drop            | English-Wiki-Close |    0.789    |0.798|0.789|0.794|0.613|0.474|0.535|
-|+ entity_iob(最好的一次)     | English-Wiki-Close |    0.795    |0.803|0.796|0.799|0.591|0.520|0.554|
+|                           |                     |             |    Primary    |  |  |   Remote    |
+|description                |  Track              |   Aver F1   |  P  |  R |  F   |  P  |  R  |  F  |
+|Relu + FFN drop            | English-Wiki-Closed |    0.789    |0.798|0.789|0.794|0.613|0.474|0.535|
+|+ entity_iob(最好的一次)     | English-Wiki-Closed |    0.795    |0.803|0.796|0.799|0.591|0.520|0.554|
+|single language            | German-20K-Closed   |    0.825    |0.832|0.830|0.831|0.830|0.396|0.536|
+
+
+|                           |                      |             |    Primary    |  |  |   Remote    |
+|description                |  Track               |   Aver F1   |  P  |  R |  F   |  P  |  R  |  F  |
+|Multilingual without pre emb| English-Wiki-Open   |    0.761    |0.768|0.764|0.766|0.538|0.441|0.485|
+|Multilingual without pre emb| French-20K-Open     |    0.681    |0.682|0.694|0.688|0.614|0.238|0.343|
+|Multilingual without pre emb| German-20K-Open     |    0.803    |0.810|0.808|0.809|0.736|0.423|0.537|
+|Multilingual + Bert         | English-Wiki-Open   |    0.815    |0.825|0.815|0.820|0.602|0.548|0.573|
+|Multilingual + Bert         | French-20K-Open     |    0.788    |0.790|0.801|0.795|0.638|0.388|0.483|
+|Multilingual + Bert         | German-20K-Open     |    0.835    |0.840|0.839|0.840|0.844|0.455|0.592|
 
 ## 参考
 
