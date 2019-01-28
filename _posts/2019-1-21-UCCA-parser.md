@@ -73,29 +73,29 @@ mathjax: true
 |                            |                     |              |    Primary    |  |  |   Remote    |
 |description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |single + pre emb            | English-Wiki-Closed |    0.789     |0.798|0.789|0.794|0.613|0.474|0.535|
-|single + bert               | English-Wiki-Open   |    0.817     |0.820|0.823|0.821|0.575|0.612|0.593|
-|single + pre emb + bert     | English-Wiki-Open   |    0.821     |0.822|0.828|0.825|0.597|0.610|0.603|
+|single + bert               | English-Wiki-Open   |    0.817     |0.823|0.820|0.821|0.612|0.575|0.593|
+|single + pre emb + bert     | English-Wiki-Open   |    0.821     |0.822|0.828|0.825|0.610|0.597|0.603|
 |Multilingual                | English-Wiki-Open   |    0.761     |0.768|0.764|0.766|0.538|0.441|0.485|
-|Multilingual + pre emb      | English-Wiki-Open   |    0.786     |0.784|0.798|0.791|0.444|0.591|0.507|
+|Multilingual + pre emb      | English-Wiki-Open   |    0.786     |0.798|0.784|0.791|0.591|0.444|0.507|
 |Multilingual + bert         | English-Wiki-Open   |    0.815     |0.825|0.815|0.820|0.602|0.548|0.573|
 |Multilingual +pre emb + bert| English-Wiki-Open   |    0.822     |0.823|0.831|0.827|0.599|0.580|0.590|
 
 |                            |                      |              |    Primary    |  |  |   Remote    |
 |description                 |  Track               |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |Multilingual                | French-20K-Open      |    0.681     |0.682|0.694|0.688|0.614|0.238|0.343|
-|Multilingual + pre emb      | French-20K-Open      |    0.645     |0.658|0.649|0.653|0.079|0.472|0.136|
+|Multilingual + pre emb      | French-20K-Open      |    0.645     |0.649|0.658|0.653|0.472|0.079|0.136|
 |Multilingual + bert         | French-20K-Open      |    0.788     |0.790|0.801|0.795|0.638|0.388|0.483|
-|Multilingual +pre emb + bert| French-20K-Open      |    0.773     |0.786|0.775|0.780|0.350|0.688|0.464|
+|Multilingual +pre emb + bert| French-20K-Open      |    0.773     |0.775|0.786|0.780|0.688|0.350|0.464|
 
 |                            |                      |              |    Primary    |  |  |   Remote    |
 |description                 |  Track               |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |single + pre emb            | German-20K-Closed    |    0.825     |0.832|0.830|0.831|0.830|0.396|0.536|
-|single + bert               | German-20K-Open      |    0.837     |0.839|0.845|0.842|0.501|0.777|0.610|
-|single + pre emb + bert     | German-20K-Open      |    0.844     |0.848|0.849|0.849|0.509|0.817|0.628|
+|single + bert               | German-20K-Open      |    0.837     |0.845|0.839|0.842|0.777|0.501|0.610|
+|single + pre emb + bert     | German-20K-Open      |    0.844     |0.849|0.848|0.849|0.817|0.507|0.628|
 |Multilingual                | German-20K-Open      |    0.803     |0.810|0.808|0.809|0.736|0.423|0.537|
-|Multilingual + pre emb      | German-20K-Open      |    0.822     |0.826|0.829|0.828|0.422|0.748|0.555|
+|Multilingual + pre emb      | German-20K-Open      |    0.822     |0.829|0.826|0.828|0.748|0.442|0.555|
 |Multilingual + bert         | German-20K-Open      |    0.835     |0.840|0.839|0.840|0.844|0.455|0.592|
-|Multilingual +pre emb + bert| German-20K-Open      |    0.843     |0.849|0.848|0.849|0.512|0.775|0.617|
+|Multilingual +pre emb + bert| German-20K-Open      |    0.843     |0.848|0.849|0.849|0.775|0.512|0.617|
 
 
 ## 参考
