@@ -98,6 +98,9 @@ mathjax: true
 |Multilingual +pre emb + bert| German-20K-Open      |    0.843     |0.848|0.849|0.849|0.775|0.512|0.617|
 
 
+#### 2019.2.17
+调整了部分代码，重跑一遍所有实验。发现Multilingual + bert模型在英语和法语上的结果有问题，之前的结果偏低了，可能影响最终结果。Multilingual + pre模型在法语上的结果也偏低了，不过还是比不加pre要低挺多，不影响最终结果。其他实验误差只在0.2%左右，说明没有问题。尝试了添加阈值来确定是否选择两条remote，但是好像没有用。
+
 ## 参考
 
 * [A Transition-Based Directed Acyclic Graph Parser for UCCA(V2)](https://arxiv.org/pdf/1704.00552v2.pdf)
