@@ -99,7 +99,26 @@ mathjax: true
 
 
 #### 2019.2.7
-调整了部分代码，重跑一遍所有实验。发现Multilingual + bert模型在英语和法语上的结果有问题，之前的结果偏低了，可能影响最终结果。Multilingual + pre模型在法语上的结果也偏低了，不过还是比不加pre要低挺多，不影响最终结果。其他实验误差只在0.2%左右，说明没有问题。尝试了添加阈值来确定是否选择两条remote，但是好像没有用。
+调整了部分代码，重跑一遍所有实验。发现Multilingual + bert模型在英语和法语上的结果有问题，之前的结果偏低了，会影响最终结果。Multilingual + pre模型在法语上的结果也偏低了，不过还是比不加pre要低挺多，不影响最终结果。其他实验误差只在0.2%左右，说明没有问题。尝试了添加阈值来确定是否选择两条remote，但是好像没有用。
+
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|Multilingual + pre emb      | English-Wiki-Open   |    0.788     |0.797|0.789|0.793|0.602|0.490|0.541|
+|Multilingual + bert         | English-Wiki-Open   |    0.826     |0.831|0.831|0.831|0.619|0.537|0.575|
+|Multilingual +pre emb + bert| English-Wiki-Open   |    0.822     |0.833|0.821|0.827|0.626|0.575|0.599|
+
+|                            |                      |              |    Primary    |  |  |   Remote    |
+|description                 |  Track               |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|Multilingual + pre emb      | French-20K-Open      |    0.665     |0.670|0.677|0.673|0.564|0.103|0.174|
+|Multilingual + bert         | French-20K-Open      |    0.789     |0.790|0.801|0.796|0.706|0.416|0.524|
+|Multilingual +pre emb + bert| French-20K-Open      |    0.777     |0.780|0.789|0.785|0.680|0.327|0.442|
+
+|                            |                      |              |    Primary    |  |  |   Remote    |
+|description                 |  Track               |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|Multilingual + pre emb      | German-20K-Open      |    0.821     |0.829|0.824|0.826|0.766|0.434|0.554|
+|Multilingual + bert         | German-20K-Open      |    0.841     |0.845|0.847|0.846|0.830|0.515|0.635|
+|Multilingual +pre emb + bert| German-20K-Open      |    0.841     |0.845|0.846|0.845|0.811|0.547|0.654|
+
 
 ## 参考
 
