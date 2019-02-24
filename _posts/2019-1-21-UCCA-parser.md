@@ -123,6 +123,21 @@ mathjax: true
 |Multilingual +pre emb + bert| German-20K-Open      |    0.841     |0.845|0.846|0.845|0.811|0.547|0.654|
 
 
+#### 2019.2.7
+补跑了几个实验, 暂时各跑了两个。
+
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|no pre emb                  | English-Wiki-Close   |    0.774     |0.777|0.780|0.778|0.619|0.482|0.542|
+|+pre emb&no fine tuning     | English-Wiki-Close   |    0.785     |0.793|0.787|0.790|0.619|0.411|0.494|
+
+
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|no pre emb                  | German-20K-Close   |    0.811     |0.817|0.816|0.817|0.733|0.439|0.549|
+|+pre emb&no fine tuning     | German-20K-Close   |    0.823     |0.830|0.827|0.829|0.812|0.409|0.544|
+
+
 ## 参考
 
 * [A Transition-Based Directed Acyclic Graph Parser for UCCA(V2)](https://arxiv.org/pdf/1704.00552v2.pdf)
