@@ -123,7 +123,7 @@ mathjax: true
 |Multilingual +pre emb + bert| German-20K-Open      |    0.841     |0.845|0.846|0.845|0.811|0.547|0.654|
 
 
-#### 2019.2.7
+#### 2019.2.24
 补跑了几个实验, 暂时各跑了两个。
 
 |                            |                     |              |    Primary    |  |  |   Remote    |
