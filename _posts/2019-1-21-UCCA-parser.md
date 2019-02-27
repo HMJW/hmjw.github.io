@@ -140,6 +140,7 @@ mathjax: true
 
 #### 2019.2.27
 修改了处理discontinuity的部分。修改了remote部分，只用一个MLP和loss。结果没有太大变化。
+
 |                            |                     |              |    Primary    |  |  |   Remote    |
 |description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |modify dis&remote           | English-Wiki-Close  |    0.790     |0.799|0.790|0.795|0.644|0.433|0.518|
