@@ -138,6 +138,18 @@ mathjax: true
 |+pre emb&no fine tuning     | German-20K-Close   |    0.823     |0.830|0.827|0.829|0.812|0.409|0.544|
 
 
+#### 2019.2.27
+修改了处理discontinuity的部分。修改了remote部分，只用一个MLP和loss。结果没有太大变化。
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|modify dis&remote           | English-Wiki-Close  |    0.790     |0.799|0.790|0.795|0.644|0.433|0.518|
+
+
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|modify dis&remote           | German-20K-Close    |    0.825     |0.835|0.827|0.831|0.763|0.401|0.526|
+
+
 ## 参考
 
 * [A Transition-Based Directed Acyclic Graph Parser for UCCA(V2)](https://arxiv.org/pdf/1704.00552v2.pdf)
