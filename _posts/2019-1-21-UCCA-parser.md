@@ -150,7 +150,7 @@ mathjax: true
 |description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |modify dis&remote           | German-20K-Close    |    0.825     |0.835|0.827|0.831|0.763|0.401|0.526|
 
-#### 2019.2.27
+#### 2019.3.2
 改用了英文的单语言BERT测试结果
 
 |                            |                     |              |    Primary    |  |  |   Remote    |
