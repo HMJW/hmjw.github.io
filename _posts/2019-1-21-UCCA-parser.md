@@ -150,6 +150,16 @@ mathjax: true
 |description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |modify dis&remote           | German-20K-Close    |    0.825     |0.835|0.827|0.831|0.763|0.401|0.526|
 
+#### 2019.2.27
+改用了英文的单语言BERT测试结果
+
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|base BERT + pre emb         | English-Wiki-Open   |    0.826     |0.833|0.828|0.831|0.616|0.507|0.556|
+|large BERT + pre emb        | English-Wiki-Open   |    0.821     |0.827|0.825|0.826|0.634|0.534|0.580|
+
+
+
 
 ## 参考
 
