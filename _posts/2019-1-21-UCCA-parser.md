@@ -158,6 +158,20 @@ mathjax: true
 |base BERT + pre emb         | English-Wiki-Open   |    0.826     |0.833|0.828|0.831|0.616|0.507|0.556|
 |large BERT + pre emb        | English-Wiki-Open   |    0.821     |0.827|0.825|0.826|0.634|0.534|0.580|
 
+#### 2019.3.6
+用单语言BERT在unlabeled数据上fine tuning后重新训练，发现结果没有太大变化。
+
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|finetuning BERT + pre emb   | English-Wiki-Open   |    0.826     |0.833|0.828|0.831|0.616|0.507|0.556|
+
+#### 2019.3.7
+测试charlstm的效果。删除entity和dep label。
+
+|                            |                     |              |    Primary    |  |  |   Remote    |
+|description                 |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|finetuning BERT + pre emb   | English-Wiki-Open   |    0.826     |0.833|0.828|0.831|0.616|0.507|0.556|
+
 
 
 
