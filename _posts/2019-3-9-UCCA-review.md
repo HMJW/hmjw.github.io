@@ -86,11 +86,12 @@ $$l=argmax(softmax(W_l^2h+b_l^2))$$
 
 #### 实验
 训练时，$node_i$ attend到它父亲$node_p$最左边的孩子，直到$node_p$不是$node_p$的父亲的最左边孩子。cross-entropy loss。
+
 预测时，先为每个terminal创建一个non-termonal node，然后执行attention。
 结果只给出了英文close的结果,和baseline差不多。
 
 #### 存疑
-1.符号表示不清，我看的时候感觉前后矛盾(比如i,j)。还有自己定义的符号下面没用过($j_r$定义了没用过，下面是写错了？)，不知道定义的干嘛的。比如图中的蓝线表达的意思应该是1.4 attention到1.3和1.1，但是公式的含义明明是attention到terminal node,然后下面又说是父亲的最左边孩子？
+1.符号表示不清，我看的时候感觉前后矛盾(比如i,j)。还有自己定义的符号下面没用过($j_r$定义了没用过，下面是写错了？)，不知道定义的干嘛的。比如图中的蓝线表达的意思应该是1.4 attend到1.3和1.1，但是公式的含义明明是attend到terminal node,然后下面又说是父亲的最左边孩子？
 
 2.remote edge不知道怎么做的。
 
