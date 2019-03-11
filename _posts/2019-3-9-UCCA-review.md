@@ -56,6 +56,49 @@ open的训练集中英文和德文多了1000句左右，法语多了500多句，
 
 ## 二、UC Davis at SemEval-2019 Task 1: DAG Semantic Parsing with Attention-based Decoder
 
+#### 模型
+本文提出了一种attention-based decoder用来实现DAG parsing。
+
+首先需要用向量表示DAG中的每个node，表示方法与结构树中的span表示以及我们的系统几乎一样，不再赘述。
+
+用于解码的注意力机制: 给定一个node表示$v_{i,j}$，与[1 : j]的每个词做attention，取最大的作为它的$left-boundary$。如果$left-boundary \geq i$, 则创建一个父节点只指向它，例如图中的$node_{1.6}$；否则创建一个node，它的span应该囊括[$left-boundary$, j]，例如图中的$node_{1.4}$的$left-boundary$为1，则创建了$node_{1.5}$，连接[1 : 5]中的节点。至于attention计算方法，就是经过同一个MLP，再做点乘：
+
+$$h_i = ReLU(Wv_{i}+b)$$
+
+$$h_o = ReLU(Wv_{o}+b)$$
+
+$$mm = h_i h_o^T$$
+
+$$p_{boundary}=softmax(mm)$$
+
+标签预测: 把某个节点和其父亲的向量拼接后经过MLP作分类：
+
+$$h=ReLU(W_l^1(p\cdot v_{i,j})+b_l^1)$$
+
+$$l=argmax(softmax(W_l^2h+b_l^2))$$
+
+处理discontinuous node: 做一个二元分类：判断该span是否形成一个proper noun，或者该span是一个discontinuous node。
+若是第一种情况，则连接所有节点（例如图中的$node_{1.1}$），若是第二种情况，则只连接最左边和最右边的节点（例如图中的$node_{1.4}$）。
+
+处理remote edges: 用一个不同的BiLSTM，然后和primary edge一样做用matrix multiplication decoder。
+
+![attention](/src/2019-3-9-UCCA-review/attention.jpg)
+
+#### 实验
+训练时，$node_i$ attend到它父亲$node_p$最左边的孩子，直到$node_p$不是$node_p$的父亲的最左边孩子。cross-entropy loss。
+预测时，先为每个terminal创建一个non-termonal node，然后执行attention。
+结果只给出了英文close的结果,和baseline差不多。
+
+#### 存疑
+1.符号表示不清，我看的时候感觉前后矛盾(比如i,j)。还有自己定义的符号下面没用过($j_r$定义了没用过，下面是写错了？)，不知道定义的干嘛的。比如图中的蓝线表达的意思应该是1.4 attention到1.3和1.1，但是公式的含义明明是attention到terminal node,然后下面又说是父亲的最左边孩子？
+
+2.remote edge不知道怎么做的。
+
+3.还有这个二元分类，算出两个分值是做什么，怎么判断属于哪一种情况？比大小？那loss怎么算。也没说。二元分类不应该是用sigmoid，然后和0.5做比较吗？
+
+4.为什么在预测时要为每个terminal创建non-terminal？
+
+
 
 
 ## 参考
