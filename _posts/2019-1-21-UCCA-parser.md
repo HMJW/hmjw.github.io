@@ -1,9 +1,9 @@
 ---
 layout: post
-title:  "UCCA parser 实验记录"
+title:  "UCCA评测实验记录"
 categories: NLP
 tags: NLP semantic-parsing UCCA
-excerpt: UCCA parser
+excerpt: 参加UCCA评测时做的一些实验记录
 author: wjiang
 mathjax: true
 ---
