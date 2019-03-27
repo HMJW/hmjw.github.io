@@ -13,7 +13,7 @@ mathjax: true
 
 ## 一、优化修改代码
 
-主要修改了两个部分。一个是在算出batch中所有的lstm_out后直接把所有句子中所有的span向量算出来，这样做显存占用变大，但速度提升很多。第二个就是增加了local_loss+cky解码的方法，其中cky的代码先用矩阵存储分值，再回溯。结果会比原作者的代码快一倍多，虽然看上去原作者的代码不用回溯，省了很多计算。
+主要修改了两个部分。一个是在算出batch中所有的lstm_out后直接把所有句子中所有的span向量算出来，这样做显存占用变大，但速度提升很多。第二个就是增加了local_loss+cky解码的方法，其中cky的代码先用矩阵存储分值，再回溯。结果会比原作者的代码快一倍多，虽然看上去原作者的代码不用回溯，省了很多循环。
 
 ## 二、实验记录
 
@@ -48,7 +48,7 @@ charlstm的影响, 加入dropout。chart默认是local loss + cky解码。
 |chart-char_dim=100,char_lstm=50*2,drop=0.5| English-Wiki-Close   |    0.783     |0.799|0.777|0.788|0.644|0.395|0.490|
 
 #### 2019.3.25
-尝试self attention。目前结果77%左右。
+尝试self attention。目前结果77%左右，默认将word representation和position encoding分离。
 
 |                                             |                     |              |    Primary    |  |  |   Remote    |
 |description                                  |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
@@ -57,5 +57,5 @@ charlstm的影响, 加入dropout。chart默认是local loss + cky解码。
 |topdown,d=600,l=8,optimizer沿用论文           | English-Wiki-Close   |    0.776     |0.785|0.778|0.782|0.581|0.373|0.454|
 |topdown,d=600,l=6,optimizer=adam             | English-Wiki-Close   |    0.778     |0.784|0.782|0.783|0.637|0.354|0.455|
 
-普通的adam效果还好一些，继续增大层数已经没有用了。尝试减少层数。
+普通的adam效果还好一些，继续增大层数已经没有用了。后续有时间继续添加一些实验。
 
