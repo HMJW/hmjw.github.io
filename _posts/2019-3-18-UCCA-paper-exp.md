@@ -48,5 +48,12 @@ charlstm的影响, 加入dropout。chart默认是local loss + cky解码。
 |chart-char_dim=100,char_lstm=50*2,drop=0.5| English-Wiki-Close   |    0.783     |0.799|0.777|0.788|0.644|0.395|0.490|
 
 #### 2019.3.25
-尝试self attention。目前结果还是很糟糕，最高73%左右。
+尝试self attention。目前结果77%左右。
+|                                             |                     |              |    Primary    |  |  |   Remote    |
+|description                                  |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|topdown,d=600,l=6,optimizer沿用论文           | English-Wiki-Close   |    0.773     |0.783|0.774|0.779|0.606|0.351|0.445|
+|chart,d=600,l=6,optimizer沿用论文             | English-Wiki-Close   |    0.775     |0.794|0.766|0.780|0.591|0.417|0.489|
+|topdown,d=600,l=8,optimizer沿用论文           | English-Wiki-Close   |    0.776     |0.785|0.778|0.782|0.581|0.373|0.454|
+|topdown,d=600,l=6,optimizer=adam             | English-Wiki-Close   |    0.778     |0.784|0.782|0.783|0.637|0.354|0.455|
+普通的adam效果还好一些，继续增大层数已经没有用了。尝试减少层数。
 
