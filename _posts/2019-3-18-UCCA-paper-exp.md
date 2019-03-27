@@ -49,6 +49,7 @@ charlstm的影响, 加入dropout。chart默认是local loss + cky解码。
 
 #### 2019.3.25
 尝试self attention。目前结果77%左右。
+
 |                                             |                     |              |    Primary    |  |  |   Remote    |
 |description                                  |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |topdown,d=600,l=6,optimizer沿用论文           | English-Wiki-Close   |    0.773     |0.783|0.774|0.779|0.606|0.351|0.445|
