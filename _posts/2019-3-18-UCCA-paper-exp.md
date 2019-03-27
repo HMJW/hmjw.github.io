@@ -56,5 +56,6 @@ charlstm的影响, 加入dropout。chart默认是local loss + cky解码。
 |chart,d=600,l=6,optimizer沿用论文             | English-Wiki-Close   |    0.775     |0.794|0.766|0.780|0.591|0.417|0.489|
 |topdown,d=600,l=8,optimizer沿用论文           | English-Wiki-Close   |    0.776     |0.785|0.778|0.782|0.581|0.373|0.454|
 |topdown,d=600,l=6,optimizer=adam             | English-Wiki-Close   |    0.778     |0.784|0.782|0.783|0.637|0.354|0.455|
+
 普通的adam效果还好一些，继续增大层数已经没有用了。尝试减少层数。
 
