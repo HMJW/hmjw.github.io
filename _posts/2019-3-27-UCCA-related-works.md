@@ -33,4 +33,10 @@ author: wjiang
 2. 共享embedding；保留主任务的encoder，添加一个共享的encoder，两个encoder的输出拼接或相加或者只用主任务的作为特定decoder的输入。
 
 ## SRL
-TO BE ADDED。
+[End-to-end Learning of Semantic Role Labeling Using Recurrent Neural Networks](/src/2019-3-27-related-papers/E.pdf) : 最早的端到端的SRL模型之一。
+
+[Deep Semantic Role Labeling What Works and Whats Next](/src/2019-3-27-related-papers/DSRL.pdf) : highway lstm， lstm dropout。还有一些解码的限制方法。
+
+[Deep Semantic Role Labeling with Self-Attention](/src/2019-3-27-related-papers/DSRL-SA.pdf) : self attention encoder。
+
+[Syntax-aware Neural Semantic Role Labeling](/src/2019-3-27-related-papers/SNSRL.pdf) : 额外利用依存树，通过四种方法获取syntax信息。
