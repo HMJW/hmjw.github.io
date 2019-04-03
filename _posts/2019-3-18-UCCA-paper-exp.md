@@ -60,6 +60,7 @@ charlstm的影响, 加入dropout。chart默认是local loss + cky解码。
 普通的adam效果还好一些，继续增大层数已经没有用了。后续有时间继续添加一些实验。
 
 #### 2019.4.1
+
 self attention模型中加入了charlstm部分的dropout，有点提升。
 |                                                       |                     |              |    Primary    |  |  |   Remote    |
 |description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
