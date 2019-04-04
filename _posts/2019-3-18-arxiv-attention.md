@@ -14,12 +14,16 @@ author: wjiang
 
 在overleaf上下载的源码可能不包含.bbl文件，而是.bib文件。提交arxiv需要bbl文件，所以请确保在本地编译通过，生成.bbl文件，然后把文件名都命名为main。下图是提交时的所有文件。
 
+运行如下命令：
+
 ```bash
 pdflatex main.tex
 bibtex main
 pdflatex main.tex
+pdflatex main.tex
 ```
 
+提交时把bib文件移除。
 ```bash
 ├── acl2018.sty
 ├── acl_natbib.bst
