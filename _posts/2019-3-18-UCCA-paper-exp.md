@@ -70,5 +70,20 @@ self attention模型中加入了charlstm部分的dropout，有点提升。
 |topdown,d=600,l=6,adam,embdrop=0.5,chardrop=0.5        | English-Wiki-Close  |    0.786     |0.794|0.788|0.791|0.637|0.392|0.486|
 
 
-#### 2019.4.3
-尝试用self attention模型同时训练ucca和srl。目前效果还不好。
+#### 2019.4.15
+ucca和srl进行mtl。
+
+|                                                       |                     |              |    Primary    |  |  |   Remote    |
+|description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|chart + srl lstm 最后一层的输出                          | English-Wiki-Open   |    0.795     |0.791|0.809|0.800|0.496|0.589|0.538|
+|topdown + srl lstm 最后一层的输出                        | English-Wiki-Open   |    0.000     |0.000|0.000|0.000|0.000|0.000|0.000|
+
+
+#### 2019.4.18
+ucca和dependency parsing进行mtl。
+
+|                                                       |                     |              |    Primary    |  |  |   Remote    |
+|description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|chart + biaffine lstm weighted sum                     | English-Wiki-Open   |    0.800     |0.794|0.818|0.806|0.485|0.574|0.526|
+|topdown + biaffine lstm weighted sum                   | English-Wiki-Open   |    0.804     |0.805|0.812|0.808|0.485|0.629|0.548|
+
