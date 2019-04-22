@@ -71,19 +71,33 @@ self attention模型中加入了charlstm部分的dropout，有点提升。
 
 
 #### 2019.4.15
-ucca和srl进行mtl。
+ucca和srl进行mtl。只记录了结果较好的，其他尝试结果更差。
 
 |                                                       |                     |              |    Primary    |  |  |   Remote    |
 |description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |chart + srl lstm 最后一层的输出                          | English-Wiki-Open   |    0.795     |0.791|0.809|0.800|0.496|0.589|0.538|
-|topdown + srl lstm 最后一层的输出                        | English-Wiki-Open   |    0.000     |0.000|0.000|0.000|0.000|0.000|0.000|
+|topdown + srl lstm 最后一层的输出                        | English-Wiki-Open   |    0.795     |0.792|0.808|0.800|0.403|0.592|0.480|
 
 
 #### 2019.4.18
-ucca和dependency parsing进行mtl。
+ucca和dependency parsing进行mtl。重新跑了几次，发现结果有0.2%的浮动。下面是最高的。
 
 |                                                       |                     |              |    Primary    |  |  |   Remote    |
 |description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |chart + biaffine lstm weighted sum                     | English-Wiki-Open   |    0.800     |0.794|0.818|0.806|0.485|0.574|0.526|
 |topdown + biaffine lstm weighted sum                   | English-Wiki-Open   |    0.804     |0.805|0.812|0.808|0.485|0.629|0.548|
+
+#### 2019.4.22
+加入句法和ucca的bert进行MTL。相比之前加的bert模型没有提升。
+
+|                                                       |                     |              |    Primary    |  |  |   Remote    |
+|description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|topdown + biaffine lstm weighted sum + bert            | English-Wiki-Open   |    0.826     |0.830|0.831|0.831|0.471|0.648|0.546|
+
+
+用预训练的biaffine parser来提取特征取代bert特征。用charlstm取代了词性，在test的f值为94.35%，已经超过了论文中的结果。
+
+|                                                       |                     |              |    Primary    |  |  |   Remote    |
+|description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
+|topdown + biaffine feature                             | English-Wiki-Open   |    0.800     |0.803|0.807|0.805|0.406|0.651|0.500|
 
