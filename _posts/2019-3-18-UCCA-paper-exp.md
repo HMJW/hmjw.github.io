@@ -101,3 +101,9 @@ ucca和dependency parsing进行mtl。重新跑了几次，发现结果有0.2%的
 |description                                            |  Track              |   Aver F1    |  P  |  R |  F   |  P  |  R  |  F  |
 |topdown + biaffine feature                             | English-Wiki-Open   |    0.800     |0.803|0.807|0.805|0.406|0.651|0.500|
 
+
+#### 2019.4.30
+
+[目前所有有用的实验结果](/src/2019-3-18-UCCA-parper-exp/exp.md)
+
+[Experimental Setup](/src/2019-3-18-UCCA-parper-exp/exp.docx)
