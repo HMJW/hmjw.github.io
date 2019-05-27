@@ -14,7 +14,7 @@
      */
   var demoContent = [
     {
-      demo_link: 'http://101.132.166.249:5000/demo',
+      demo_link: 'http://139.224.234.18:5000/demo',
       img_link: '',
       code_link: '#',
       title: '中文多粒度分词系统(MWS)',
