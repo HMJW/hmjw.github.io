@@ -49,7 +49,13 @@ $ ssh-copy-id -i /c/Users/jw/.ssh/id_rsa.pub LaGroup@192.168.126.143
 
 由于服务器是多人共用，所以配置全局的git会有问题，所以要确保每个人使用自己的账号方法如下：
 
-首先在.ssh下创建一个config
+首先生成SSH Key:
+
+```shell
+ssh-keygen -t rsa -C '767257113@qq.com' -f ~/.ssh/id_rsa.wjiang
+```
+
+然后在.ssh下创建一个config
 在该config中添加如下：
 ```shell
 Host github.wjiang
@@ -58,7 +64,7 @@ Host github.wjiang
     IdentityFile ~/.ssh/id_rsq.wjiang
 ```
 
-然后对于一个仓库：
+对于一个仓库：
 
 ```shell
 cd repos
