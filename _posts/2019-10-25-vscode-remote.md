@@ -67,6 +67,7 @@ Host github.wjiang
 对于一个仓库：
 
 ```shell
+git clone git@github.wjiang:HMJW/repos.git
 cd repos
 git config user.name hmjw
 git config user.email '767257113@qq.com'
