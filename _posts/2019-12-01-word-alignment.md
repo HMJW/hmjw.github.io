@@ -26,7 +26,7 @@ fast align下载地址:[github](https://github.com/clab/fast_align)
 
 ## 用GIZA++训练word alignment
 
-准备好源语言以及目标语言的预料文件。文件每行一个句子，一行中词与词用空格隔开。
+准备好源语言以及目标语言的语料文件。文件每行一个句子，一行中词与词用空格隔开。
 
 1. 首先执行如下命令：
 ```shell
