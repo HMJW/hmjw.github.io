@@ -19,6 +19,7 @@ author: wjiang
 ## 下载与编译
 
 GIZA++下载地址:[github](https://github.com/moses-smt/giza-pp)
+
 fast align下载地址:[github](https://github.com/clab/fast_align)
 
 进入GIZA++的主目录，执行make命令编译出可致执行文件。fast align的使用方法参考github上的README。
