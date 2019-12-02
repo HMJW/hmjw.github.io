@@ -70,5 +70,5 @@ type: page
 
 ## 其他
 
-* [自动阅卷程序](https://github.com/hmjwhmjw/hmjwhmjw.github.io/raw/master/src/collection/scorer-master-2018-12-2-8-37.tar.gz)
+* [自动阅卷程序](https://github.com/hmjw/hmjw.github.io/raw/master/src/collection/scorer-master-2018-12-2-8-37.tar.gz)
 

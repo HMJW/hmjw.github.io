@@ -32,7 +32,7 @@ mathjax: true
 
 模型主要分成三个部分。第一个部分是shared encoder，就是底层公用的LSTM。第二个部分是span parser部分，详情参考<[A Minimal Span-Based Neural Constituency Parser](http://www.aclweb.org/anthology/P/P17/P17-1076.pdf)>,几乎没有做任何变化。第三个部分是remote classifier，详情参考<[DEEP BIAFFINE ATTENTION FOR NEURAL DEPENDENCY PARSING](https://arxiv.org/pdf/1611.01734.pdf)>，每个node同样也像span parser一样用span向量表示，其余没有做太多改动。
 
-* 训练时，需要从UCCA中提取转换后的树(详情见[博客](https://hmjwhmjw.github.io/2019/01/02/UCCA-design/))以及remote的信息，分别传给span parser以及remote classifier来计算loss。得到的两个loss相加后进行backword。若图中没有remote，remote部分的loss就为0。如下图所示。
+* 训练时，需要从UCCA中提取转换后的树(详情见[博客](https://hmjw.github.io/2019/01/02/UCCA-design/))以及remote的信息，分别传给span parser以及remote classifier来计算loss。得到的两个loss相加后进行backword。若图中没有remote，remote部分的loss就为0。如下图所示。
 ![training](/src/2019-1-21-UCCA-parser/training.png)
 
 * 测试时，先通过span parser得到一棵树，先通过规则还原discontinuity，再检测树中的扩展标签。如果没有对应的remote标签则无需添加remote edge，若有，通过remote classifier添加remote edge。如下图所示。
