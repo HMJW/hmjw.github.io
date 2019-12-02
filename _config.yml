@@ -25,7 +25,7 @@ description_footer: 来自wjiang的个人博客！
 gitalk: enable
 clientID: 1bbeac5e740f287e5b6f
 clientSecret: 7ce61276b006fca919dd4b08f0c086c81a6176ca
-repo: https://github.com/hmjw/hmjw.github.io
+repo: hmjw.github.io
 owner: hmjw
 admin: hmjw
 
