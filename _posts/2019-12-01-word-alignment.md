@@ -98,3 +98,12 @@ python extract.py -i toy.rev.A3.final -o toy.rev.A3.final.extract -r
 ```
 得到最终的对齐文件，中文在左，英文在右。
 
+## 可视化
+所需脚本链接 : [vision.py](/src/2019-12-01-word-alignment/vision.py)
+运行命令:
+```shell
+python vision.py -s toy.ch -t toy.en -n 3
+```
+-n代表第几个句子，显示结果如下：
+![alignment](/src/2019-12-01-word-alignment/alignment.png)
+
