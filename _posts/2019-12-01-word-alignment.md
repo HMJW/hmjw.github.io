@@ -33,7 +33,6 @@ fast align下载地址:[github](https://github.com/clab/fast_align)
 ```shell
 ./GIZA++-v2/plain2snt.out toy.ch toy.en
 ```
-
 此时会生成四个文件：
 ```shell
 toy.ch.vcb : 对应源语言的词典
