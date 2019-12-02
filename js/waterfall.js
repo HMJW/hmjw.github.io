@@ -27,7 +27,7 @@
       code_link: '#',
       title: '汉语理解平台(CUP)',
       core_tech: 'python',
-      description: '<a href ="http://hlt.suda.edu.cn/index.php/CUP">平台介绍</a>。'
+      description: '汉语理解平台(Chinese Understanding Platform)。<a href ="http://hlt.suda.edu.cn/index.php/CUP">平台介绍</a>。'
     }
   ];
 
