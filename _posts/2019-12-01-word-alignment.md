@@ -106,4 +106,4 @@ python vision.py -s toy.ch -t toy.en -n 3
 ```
 -n代表第几个句子，显示结果如下：
 ![alignment](/src/2019-12-01-word-alignment/alignment.png)
-
+如果中文无法正常显示，请自行查找“matplotlib如何显示中文”,以后可能有空添加解决方案;请注意58-60行的注释。

@@ -54,8 +54,12 @@ def vision(source, target, alignment):
     tick_spacing = 1
     ax.xaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
     ax.yaxis.set_major_locator(ticker.MultipleLocator(tick_spacing))
+
+    # 下面四行用来画网格线，在mac os上测试没有问题。在windows测试发现会错位
+    # 解决方案1:直接注释掉下面四行
+    # 解决方案2：下面第二行改成 ax.set_yticks(np.arange(len(raws) + 1) - 0.5, minor=True)
     ax.set_xticks(np.arange(len(column)) + 0.5, minor=True)  # Grid lines
-    ax.set_yticks(np.arange(len(raws)) + 0.5, minor=True)
+    ax.set_yticks(np.arange(len(raws)) + 0.5, minor=True) #
     ax.xaxis.grid(True, which='minor')
     ax.yaxis.grid(True, which='minor')
 
