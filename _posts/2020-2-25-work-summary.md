@@ -35,9 +35,21 @@ SMT相关：TODO
 MTL也是句法增强的一种有效办法，让NMT模型同时去学习句法，在翻译时也就能更注重句法的信息。Luong et al. (2016)、
 Aharoni and Goldberg (2017)都是将短语结构树转换为string后与翻译任务同时学习。Wu et al. (2017)、Kiperwasser and Ballesteros (2018)、Pham et al. (2019)则是将依存句法分析转化为额外的序列生成任务。此外，Pham et al. (2019)还提出了一种用MHA来MTL依存关系的方法。
 
+(会陆续增加一些新看的)
+
 ## 工作
 
-TODO
+Transformer baseline介绍：TODO。
+
+Dependency parsing as an auxiliary task: 过去也有许多工作尝试将NMT与句法放在MTL框架下联合学习，但是它们大都是将短语句法或者依存句法分析看做一个序列生成任务，利用一个和NMT中一样的decoder来生成目标。这样做一个明显的缺点是训练速度较慢，尤其是在RNN框架下，生成序列的时间代价比transformer大很多。同时将句法分析建模成序列生成任务还可能会导致失去本身的结构化信息。随着基于图的句法分析方法的兴起，直接将依存句法分析作为图解析任务。具体来说就是用编码器得到每个词的表示，然后为每个词之间的边打上分值，最终从全连接的图中解码出一棵分值最大树。计算公式如下：TODO。
+
+Joint parsing and MT model：基于图的依存句法模型同样可以看成一个encoder-decoder模型，区别在于该decoder并非传统的语言模型。下面介绍两种不同的MTL模型。
+
+Share-equal：这是最常用也是最简单的MTL框架。在该框架下，机器翻译与句法分析模型共享相同的embedding以及编码器，不同的解码器用于不同的任务。这种模型下，两个任务平等的处于同一级别上，彼此交互，能充分学习到两者的共性。最重要的是对于机器翻译来说我们希望编码器能充分学习到源端句子的句法信息，从而帮助解码。
+![share-model](/src/2020-2-25-work-summary/share.jpg)
+
+Stack-hidden：该模型下，我们使用两个独立的编码器来编码共享的embedding。对于依存句法分析来说和普通biaffine parser没有任何区别（这里的encoder还是选择LSTM而非transformer）。而对于机器翻译来说，我们先将embedding输入到依存句法的encoder中获取每一层的隐藏表示，将其作为额外的特征输入到NMT的encoder中。在该框架下，我们可以看做句法任务比机器翻译任务处在更低的级别上。
+![stack-model](/src/2020-2-25-work-summary/stack.jpg)
 
 ## 实验
 
