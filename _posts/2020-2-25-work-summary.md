@@ -46,10 +46,10 @@ Dependency parsing as an auxiliary task: 过去也有许多工作尝试将NMT与
 Joint parsing and MT model：基于图的依存句法模型同样可以看成一个encoder-decoder模型，区别在于该decoder并非传统的语言模型。下面介绍两种不同的MTL模型。
 
 Share-equal：这是最常用也是最简单的MTL框架。在该框架下，机器翻译与句法分析模型共享相同的embedding以及编码器，不同的解码器用于不同的任务。这种模型下，两个任务平等的处于同一级别上，彼此交互，能充分学习到两者的共性。最重要的是对于机器翻译来说我们希望编码器能充分学习到源端句子的句法信息，从而帮助解码。
-![share-model](/src/2020-2-25-work-summary/share.jpg)
+![share-model](/src/2020-2-25-work-summary/share.png)
 
 Stack-hidden：该模型下，我们使用两个独立的编码器来编码共享的embedding。对于依存句法分析来说和普通biaffine parser没有任何区别（这里的encoder还是选择LSTM而非transformer）。而对于机器翻译来说，我们先将embedding输入到依存句法的encoder中获取每一层的隐藏表示，将其作为额外的特征输入到NMT的encoder中。在该框架下，我们可以看做句法任务比机器翻译任务处在更低的级别上。
-![stack-model](/src/2020-2-25-work-summary/stack.jpg)
+![stack-model](/src/2020-2-25-work-summary/stack.png)
 
 ## 实验
 
