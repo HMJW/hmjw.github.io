@@ -35,17 +35,54 @@ SMT相关：TODO
 MTL也是句法增强的一种有效办法，让NMT模型同时去学习句法，在翻译时也就能更注重句法的信息。Luong et al. (2016)、
 Aharoni and Goldberg (2017)都是将短语结构树转换为string后与翻译任务同时学习。Wu et al. (2017)、Kiperwasser and Ballesteros (2018)、Pham et al. (2019)则是将依存句法分析转化为额外的序列生成任务。此外，Pham et al. (2019)还提出了一种用MHA来MTL依存关系的方法。
 
+(会陆续增加一些新看的)
+
 ## 工作
 
+Transformer baseline介绍：TODO。
+
+Dependency parsing as an auxiliary task: 过去也有许多工作尝试将NMT与句法放在MTL框架下联合学习，但是它们大都是将短语句法或者依存句法分析看做一个序列生成任务，利用一个和NMT中一样的decoder来生成目标。这样做一个明显的缺点是训练速度较慢，尤其是在RNN框架下，生成序列的时间代价比transformer大很多。同时将句法分析建模成序列生成任务还可能会导致失去本身的结构化信息。随着基于图的句法分析方法的兴起，直接将依存句法分析作为图解析任务。具体来说就是用编码器得到每个词的表示，然后为每个词之间的边打上分值，最终从全连接的图中解码出一棵分值最大树。计算公式如下：TODO。
+
+Joint parsing and MT model：基于图的依存句法模型同样可以看成一个encoder-decoder模型，区别在于该decoder并非传统的语言模型。下面介绍两种不同的MTL模型。
+
+Share-equal：这是最常用也是最简单的MTL框架。在该框架下，机器翻译与句法分析模型共享相同的embedding以及编码器，不同的解码器用于不同的任务。这种模型下，两个任务平等的处于同一级别上，彼此交互，能充分学习到两者的共性。最重要的是对于机器翻译来说我们希望编码器能充分学习到源端句子的句法信息，从而帮助解码。
+
+![share-model](/src/2020-2-25-work-summary/share.png)
 
 
-## 实验
+Stack-hidden：该模型下，我们使用两个独立的编码器来编码共享的embedding。对于依存句法分析来说和普通biaffine parser没有任何区别（这里的encoder还是选择LSTM而非transformer）。而对于机器翻译来说，我们先将embedding输入到依存句法的encoder中获取每一层的隐藏表示，将其作为额外的特征输入到NMT的encoder中。在该框架下，我们可以看做句法任务比机器翻译任务处在更低的级别上。
 
-TODO
+![stack-model](/src/2020-2-25-work-summary/stack.png)
+
+## 实验设置
+
+实验设置：我们在中-英 LDC数据集上进行实验，总共包含大约1.25M个句子对。我们取nist02数据集作为开发集，包含了878个句子。取nist03、nist04、nist05、nist06作为测试集，各包含了919、1788、1082、1664个句子。我们使用结巴工具对源端中文句子进行分词，并且使用BPE技术。目标端同样也用BPE技术，合并次数都设置为32K。我们基于开源的fairseq框架实现代码，transformer模型采用默认设置，batch大小设置为15000个token。对于share-equal模型，根据实验结果比较我们只共享encoder的前两层。对于stack模型我们采用和常规biaffine parser一样的设置，使用BiLSTM编码器，三层，维度为400。
+
+源端句法数据：为了得到源端句法数据，我们使用在CODT上训练的biaffine parser来产生源端的自动句法树，同时我们把概率低于0.8的弧全部舍弃掉。除此之外，我们还尝试使用额外的标注句法数据，包括四种不同的规范，大约40w句。
+为了保证和BPE之后的词一一对应，我们按照规则处理原始的句法树，具体来说一个词如果被切分成了多个subword，规定最右边的subword代表原来的核心词，继承原始的出边和入边。subword内部规定自右向左的弧，标签为额外添加的“subword”。
+
+![stack-model](/src/2020-2-25-work-summary/results.png)
+
 
 ## 分析
 
-TODO
+使用句法的不同方法：Zhang et al (2019), LISA方法比较。
+
+源端句法质量比较(auto、gold、auto+bert)。stack模型为例。
+
+源端数据量比较（1/8、1/4、1/2)。
+
+MTL句法性能比较。收敛速度比较。
+
+标注数据。
+
+## 存疑
+
+换成RNN是否会更有效？transformer提取特征能力强，SA机制本身和依存词对关系类似，NMT上效果差别较大。换成RNN应该更能体现句法作用。
+
+BPE的句法是否有影响？从句法的性能上来看应该没有影响。
+
+显式句法？
 
 # 参考
 
